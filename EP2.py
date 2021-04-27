@@ -5,7 +5,7 @@ class Carta:
         self.valor = Número
 
 class Carta:
-    listaNaipes = ["Espadas", "Copas", "Ouros", "Paus"]
+    listaNaipes = ["♠", "♥", "♦", "♣"]
     listaValores = ["Ás", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Valete", "Rainha", "Rei"]
 
 #Converte objetos (cartas) em strings
