@@ -11,4 +11,4 @@ return baralho
 deck = cria_baralho()
 random.shuffle(baralho)
 
-print(baralho)
+print(deck)
