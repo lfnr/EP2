@@ -9,6 +9,12 @@ def cria_baralho():
             baralho.append(str(num)+naipe)
     return baralho
 
+def extrai_valor(carta):
+    if carta[0] == "1":
+        valor = carta[0] + carta[1]
+    else:
+        valor = carta[0]
+    return valor
 
 deck = cria_baralho()
 random.shuffle(baralho)
