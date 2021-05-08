@@ -16,7 +16,14 @@ def extrai_valor(carta):
         valor = carta[0]
     return valor
 
+def extrai_naipe(carta):
+    if carta[0] == "1":
+        naipe = carta[2]
+    else:
+        naipe = carta[1]
+    return naipe
+
 deck = cria_baralho()
-random.shuffle(baralho)
+random.shuffle(deck)
 
 print(deck)
