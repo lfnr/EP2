@@ -23,6 +23,21 @@ def extrai_naipe(carta):
         naipe = carta[1]
     return naipe
 
+def lista_movimentos_possiveis(baralho, indice):
+    valor = extrai_valor(baralho[indice])
+    naipe = extrai_naipe(baralho[indice])
+    movimentos = []
+    if indice == 0:
+        return movimentos
+    if indice > 0:
+        if valor in baralho[indice -1] or naipe in baralho[indice-1]:
+            movimentos.append(baralho[indice])
+    if indice >= 3:
+        if valor in baralho[indice -3] or naipe in baralho[indice-3]:
+            movimentos.append(baralho[indice-2])
+    return movimentos
+
+
 deck = cria_baralho()
 random.shuffle(deck)
 
