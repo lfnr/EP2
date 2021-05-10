@@ -2,11 +2,15 @@ import random
 
 def cria_baralho():
     baralho = []
-    valor = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-    naipes = ["♠", "♥", "♦", "♣"]
-    for num in valor:
-        for naipe in naipes:
-            baralho.append(str(num)+naipe)
+    valor = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    for i in range(13):
+        baralho.append([i+1, "♠"])
+    for i in range(13):
+        baralho.append([i+1, "♥"])
+    for i in range(13):
+        baralho.append([i+1, "♦"])
+    for i in range(13):
+        baralho.append([i+1, "♣"])
     return baralho
 
 def extrai_valor(carta):
