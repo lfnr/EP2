@@ -49,8 +49,6 @@ def printa_carta(carta):
     
 #Interface ==================================================================================
 
-
-
 deck = cria_baralho()
 random.shuffle(deck)
 mao = deck[0:4]
@@ -67,14 +65,12 @@ if resp == "sim":
     for carta in mao:
         printa_carta(carta)
 
-
 origem = int(input("Qual a posição da carta que gostaria de mover?(1-4) "))
 
-for carta in lista_movimentos_possiveis(mao, origem):
-    printa_carta(carta)
+while origem not in range(1, 5):
+    print("Tente outro número")
+    origem = int(input("Qual a posição da carta que gostaria de mover?(1-4) "))
 
-    
-deck = cria_baralho()
-random.shuffle(deck)
-
-print(deck)
+if lista_movimentos_possiveis(mao, origem):
+    for carta in lista_movimentos_possiveis(mao, origem):
+        printa_carta(carta)
