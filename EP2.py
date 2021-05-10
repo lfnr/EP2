@@ -27,6 +27,15 @@ def lista_movimentos_possiveis(baralho, indice):
             movimentos.append(baralho[indice-4])
     return movimentos
 
+def teste_mao(mao):
+    for i in range(4):
+        if lista_movimentos_possiveis(mao, i+1) == []:
+            return False
+    return True
+
+def printa_carta(carta):
+    print(str(carta[0]) + carta[1])
+
 
 deck = cria_baralho()
 random.shuffle(deck)
