@@ -34,7 +34,16 @@ def teste_mao(mao):
     return True
 
 def printa_carta(carta):
-    print(str(carta[0]) + carta[1])
+    valor = carta[0]
+    if carta[0] == 11:
+        valor = "J"
+    if carta[0] == 12:
+        valor = "Q"
+    if carta[0] == 13:
+        valor = "K"
+    if carta[0] == 1:
+        valor = "A"
+    print(str(valor) + carta[1])
 
     
     
