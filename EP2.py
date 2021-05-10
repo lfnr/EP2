@@ -13,32 +13,18 @@ def cria_baralho():
         baralho.append([i+1, "♣"])
     return baralho
 
-def extrai_valor(carta):
-    if carta[0] == "1":
-        valor = carta[0] + carta[1]
-    else:
-        valor = carta[0]
-    return valor
-
-def extrai_naipe(carta):
-    if carta[0] == "1":
-        naipe = carta[2]
-    else:
-        naipe = carta[1]
-    return naipe
-
 def lista_movimentos_possiveis(baralho, indice):
-    valor = extrai_valor(baralho[indice])
-    naipe = extrai_naipe(baralho[indice])
+    numero = baralho[indice-1][0]
+    naipe = baralho[indice-1][1]
     movimentos = []
-    if indice == 0:
+    if indice == 1:
         return movimentos
-    if indice > 0:
-        if valor in baralho[indice -1] or naipe in baralho[indice-1]:
-            movimentos.append(baralho[indice])
-    if indice >= 3:
-        if valor in baralho[indice -3] or naipe in baralho[indice-3]:
+    if indice > 1:
+        if numero == baralho[indice-2][0] or naipe == baralho[indice-2][1]:
             movimentos.append(baralho[indice-2])
+    if indice >= 4:
+        if numero == baralho[indice-4][0] or naipe == baralho[indice-4][1]:
+            movimentos.append(baralho[indice-4])
     return movimentos
 
 
