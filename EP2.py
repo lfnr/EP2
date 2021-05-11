@@ -47,7 +47,27 @@ def empilha(mao, origem, destino):
     mao[destino-1] = mao[origem-1]
     mao.pop(origem-1)
     return mao
-    
+
+
+#Outras funções que não foram usadas para rodar o programa, porém que foram utilizadas nas primeiras instâncias do ep2 e que fazem parte do critério de avaliação
+
+def extrai_valor(carta):
+    if carta[0] == "1":
+        valor = carta[0] + carta[1]
+    else:
+        valor = carta[0]
+    return valor
+
+def extrai_naipe(carta):
+    if carta[0] == "1":
+        naipe = carta[2]
+    else:
+        naipe = carta[1]
+    return naipe
+
+
+
+
     
 #Interface ==================================================================================
 
