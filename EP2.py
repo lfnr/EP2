@@ -51,28 +51,73 @@ def empilha(mao, origem, destino):
     
 #Interface ==================================================================================
 
-deck = cria_baralho()
-random.shuffle(deck)
-mao = deck[0:4]
-
-while not teste_mao(mao):
+def jogo():
     deck = cria_baralho()
     random.shuffle(deck)
     mao = deck[0:4]
-    break
+
+    while teste_mao(mao) == False:
+        deck = cria_baralho()
+        random.shuffle(deck)
+        mao = deck[0:4]
+    
+    
+    print("Estado atual da mesa")
+    print("====================")
+    for carta in mao:
+        printa_carta(carta)
+
+    print("====================")
+
+    origem = int(input("Qual a posição da carta que gostaria de mover?(1-4) "))
+
+    while origem not in range(1, 5):
+        print("Tente outro número")
+        origem = int(input("Qual a posição da carta que gostaria de mover?(1-4) "))
+
+    if lista_movimentos_possiveis(mao, origem) == []:
+        print("Tente outro número")
+        int(input("Qual a posição da carta que gostaria de mover?(1-4) "))
+
+    i = 3
+    while len(mao) >1 and teste_mao(mao):
+
+        if lista_movimentos_possiveis(mao, origem):
+            print("Cartas possíveis:")
+            for carta in lista_movimentos_possiveis(mao, origem):
+                printa_carta(carta)
+
+        destino = int(input(("Sobre qual carta você gostaria de empilhar?(Utilize as posicões de 1-{}) ").format(i+1)))
+
+        mao = empilha(mao, origem, destino)
+
+        print("Estado atual da mesa")
+        print("====================")
+
+        for carta in mao:
+            printa_carta(carta)
+
+        print("====================")
+
+        if not teste_mao(mao) and len(mao) > 1:
+            print("Jogo acabou")
+            b = input("Você gostaria de jogar novamente? ")
+            if b == "sim":
+                jogo()
+            break
+
+        origem = int(input(("Qual a posição da carta que gostaria de mover?(1-{}) ").format(i)))
+        i = i-1
+
+    if len(mao) == 1:
+        print("Você venceu!")
+        a = input("Você gostaria de jogar novamente? ")
+        if a == "sim":
+            jogo()
+
 
 resp = input("Você gostaria de começar um jogo? ")
 
 if resp == "sim":
-    for carta in mao:
-        printa_carta(carta)
+    jogo()
 
-origem = int(input("Qual a posição da carta que gostaria de mover?(1-4) "))
-
-while origem not in range(1, 5):
-    print("Tente outro número")
-    origem = int(input("Qual a posição da carta que gostaria de mover?(1-4) "))
-
-if lista_movimentos_possiveis(mao, origem):
-    for carta in lista_movimentos_possiveis(mao, origem):
-        printa_carta(carta)
