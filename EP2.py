@@ -17,8 +17,6 @@ def lista_movimentos_possiveis(baralho, indice):
     numero = baralho[indice-1][0]
     naipe = baralho[indice-1][1]
     movimentos = []
-    if indice == 1:
-        return movimentos
     if indice > 1:
         if numero == baralho[indice-2][0] or naipe == baralho[indice-2][1]:
             movimentos.append(baralho[indice-2])
@@ -28,10 +26,10 @@ def lista_movimentos_possiveis(baralho, indice):
     return movimentos
 
 def teste_mao(mao):
-    for i in range(4):
-        if lista_movimentos_possiveis(mao, i+1) == []:
-            return False
-    return True
+    for i in range(len(mao)):
+        if lista_movimentos_possiveis(mao, i+1) != []:
+            return True
+    return False
 
 def printa_carta(carta):
     valor = carta[0]
@@ -45,6 +43,10 @@ def printa_carta(carta):
         valor = "A"
     print(str(valor) + carta[1])
 
+def empilha(mao, origem, destino):
+    mao[destino-1] = mao[origem-1]
+    mao.pop(origem-1)
+    return mao
     
     
 #Interface ==================================================================================
